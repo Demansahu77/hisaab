@@ -59,12 +59,16 @@ Requires Node.js 22 or newer and pnpm.
 ```bash
 pnpm install
 cp .env.example .env.local   # then set SESSION_SECRET (openssl rand -base64 32)
-pnpm db:push                 # create the tables in local.db
+pnpm db:migrate              # create the tables in local.db
 pnpm db:seed                 # optional: a demo flat with four members
 pnpm dev
 ```
 
 Open http://localhost:3000. After seeding, log in as `asha@example.com` with the password `password123`.
+
+## Deploy
+
+On Vercel, add a Turso database from the project's Storage tab (it sets `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN`) and set `SESSION_SECRET`. The `vercel-build` script applies any pending migrations from [`drizzle/`](drizzle/) before building, so schema changes ship with the code.
 
 ## Tests
 

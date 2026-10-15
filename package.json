@@ -9,7 +9,9 @@
     "lint": "eslint",
     "test": "vitest run",
     "db:push": "drizzle-kit push",
-    "db:seed": "node --env-file=.env.local --experimental-strip-types scripts/seed.ts"
+    "db:seed": "node --env-file=.env.local --experimental-strip-types scripts/seed.ts",
+    "db:migrate": "drizzle-kit migrate",
+    "vercel-build": "drizzle-kit migrate && next build"
   },
   "dependencies": {
     "@libsql/client": "^0.18.0",
